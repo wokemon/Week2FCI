@@ -25,8 +25,8 @@ class Permission(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=False)
     
-def has_permissions(self, permission):
-    return permission in [p.name for p in self.role.permissions]
+def has_permission(self, permission_name):
+        return any(permission.name == permission_name for permission in self.role.permissions)
 
 def __init__ (self, username, mail, password, role_id):
     self.username = username

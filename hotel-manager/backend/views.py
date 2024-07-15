@@ -31,8 +31,8 @@ def logout():
 @role_required('new_user')
 def signup():
     data = request.get_json()
-    first_name = data.get('firstName')
-    last_name = data.get('lastName')
+    first_name = data.get('first_name')
+    last_name = data.get('last_name')
     email = data.get('email')
     password = data.get('password')
     role_id = data.get('role_id')
@@ -52,5 +52,24 @@ def signup():
 
 @app.route('/change_password', methods=['POST'])
 @role_required('existing_user')
-def login_dashboard():
-    return "Welcome to your profile"
+def change_password():
+    data = request.get_json()
+    current_password = data.get('current_password')
+    new_password = data.get('new_password')
+    confirm_password = data.get('confirm_password')
+
+    if 'user_id' not in session:
+        return jsonify({"error": "You need to be logged in to change your password"}), 401
+
+    user = User.query.get(session['user_id'])
+
+    if not check_password_hash(user.password, current_password):
+        return jsonify({"error": "Current password is incorrect"}), 400
+
+    if new_password != confirm_password:
+        return jsonify({"error": "New password and confirm password do not match"}), 400
+
+    user.password = generate_password_hash(new_password)
+    db.session.commit()
+
+    return jsonify({"message": "Password changed successfully"}), 200
