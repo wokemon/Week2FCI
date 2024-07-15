@@ -24,3 +24,6 @@ class Permission(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(80), unique=True, nullalble=False)
     role_id = db.Column(db.Integer, db.ForeignKey('role.id'), nullable=False)
+    
+def has_permissions(self, permission):
+    return permission in [p.name for p in self.role.permissions]

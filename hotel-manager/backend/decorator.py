@@ -7,7 +7,7 @@ def role_required(permission):
         def decorated_function(*args, **kwargs):
             user = getattr(g, 'current_user', None)
             if user is None or not user.has_permission(permission):
-                abort(403)
+                abort(403) #forbidden
             return f(*args, **kwargs)
         return decorated_function
     return decorator
