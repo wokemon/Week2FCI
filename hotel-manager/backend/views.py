@@ -1,4 +1,4 @@
-from flask import jsonify, current_app as app, request, Blueprint
+from flask import jsonify, current_app as app, request, Blueprint, session
 from .models import User, db
 from .decorator import role_required
 
@@ -9,6 +9,10 @@ bp = Blueprint('main', __name__)
 @app.route('/login', methods=['POST'])
     
 @app.route('/logout', methods=['POST'])
+def logout():
+    session.pop('user_id', None)
+    return jsonify({'message:' 'Successfully logged out!'}), 200
+
 
 @app.route('/signup', methods=['POST'])
 @role_required('new_user')
