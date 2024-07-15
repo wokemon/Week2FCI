@@ -1,12 +1,25 @@
 from flask import jsonify, current_app as app, request, Blueprint, session
 from .models import User, db
 from .decorator import role_required
+from werkzeug.security import check_password_hash, generate_password_hash
 
 bp = Blueprint('main', __name__)
 
 @app.route('/home', methods=['POST'])
 
 @app.route('/login', methods=['POST'])
+def login():
+    data = request.get_json()
+    email = data.get('email')
+    password = data.get('password')
+    
+    user = User.query.filter_by(email=email).first()
+    
+    if user and check_password_hash(user.password, password):
+        session['user_id'] = user.id
+        return jsonify({'message': 'Login succesfully'}), 200
+    else:
+        return jsonify({'error': 'Invalid credentials'}), 401
     
 @app.route('/logout', methods=['POST'])
 def logout():
