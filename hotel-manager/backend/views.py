@@ -1,4 +1,4 @@
-from flask import jsonify, current_app as app, request, Blueprint, session, url_for
+from flask import jsonify, request, Blueprint, session, url_for
 from .models import User, db
 from .decorator import role_required
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -10,10 +10,10 @@ mail = Mail()
 
 s = URLSafeTimedSerializer('miralec2629')
 
-@app.route('/home', methods=['POST'])
+@bp.route('/home', methods=['POST'])
 
 
-@app.route('/login', methods=['POST'])
+@bp.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
     email = data.get('email')
@@ -35,7 +35,7 @@ def logout():
     return jsonify({'message:' 'Successfully logged out!'}), 200
 
 
-@app.route('/signup', methods=['POST'])
+@bp.route('/signup', methods=['POST'])
 @role_required('new_user')
 def signup():
     data = request.get_json()
@@ -58,7 +58,7 @@ def signup():
         return jsonify({'error': 'Failed to add user'}), 500
 
 #Reset password when logged in
-@app.route('/reset_password', methods=['POST'])
+@bp.route('/reset_password', methods=['POST'])
 @role_required('existing_user')
 def reset_password():
     data = request.get_json()
@@ -83,7 +83,7 @@ def reset_password():
     return jsonify({"message": "Password changed successfully"}), 200
 
 #Forgot password when at login screen
-@app.route('/forgot_password', methods=['POST'])
+@bp.route('/forgot_password', methods=['POST'])
 @role_required('existing_user')
 def forgot_password():
     data = request.get_json()
@@ -105,6 +105,25 @@ def forgot_password():
     
     return jsonify({'message': 'Password reset link has been sent to your email'}), 200
 
-
+#Reset password form
+@bp.route('/reset_password/<token>', methods=['POST'])
+def reset_password_token(token):
+    try:
+        email = s.loads(token, salt='password-reset-salt', max_age=3600)
+    except SignatureExpired:
+        return jsonify({'error': 'The reset link has expired'}), 400
+    
+    data = request.get_json()
+    new_password = data.get('new_password')
+    confirm_password = data.get('confirm_password')
+    
+    if new_password != confirm_password:
+        return jsonify({'error': 'New password and confirm password do not match'}), 400
+    
+    user = User.query.filter_by(email=email).first()
+    user.password = generate_password_hash(new_password)
+    db.session.commit()
+    
+    return jsonify({'message': 'Password has been reset successfully'}), 200
     
     
