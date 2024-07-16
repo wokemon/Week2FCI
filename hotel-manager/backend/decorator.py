@@ -1,7 +1,7 @@
 from functools import wraps
 from flask import g, jsonify
 
-def permission_required(permission):
+def role_required(permission):
     def decorator(f):
         @wraps(f)
         def decorated_function(*args, **kwargs):

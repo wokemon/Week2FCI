@@ -29,7 +29,7 @@ def login():
         return jsonify({'error': 'Invalid credentials'}), 401
     
     
-@app.route('/logout', methods=['POST'])
+@bp.route('/logout', methods=['POST'])
 def logout():
     session.pop('user_id', None)
     return jsonify({'message:' 'Successfully logged out!'}), 200
@@ -54,7 +54,7 @@ def signup():
         db.session.commit()
         return jsonify({"message": "User added successfully!"}), 201
     except Exception as e:
-        app.logger.error(f"Error adding user: {e}")
+        bp.logger.error(f"Error adding user: {e}")
         return jsonify({'error': 'Failed to add user'}), 500
 
 #Reset password when logged in
