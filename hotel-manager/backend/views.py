@@ -1,4 +1,4 @@
-from flask import jsonify, current_app as app, request, Blueprint, session
+from flask import jsonify, current_app as app, request, Blueprint, session, url_for
 from .models import User, db
 from .decorator import role_required
 from werkzeug.security import check_password_hash, generate_password_hash
@@ -7,6 +7,8 @@ from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 
 bp = Blueprint('main', __name__)
 mail = Mail()
+
+s = URLSafeTimedSerializer('miralec2629')
 
 @app.route('/home', methods=['POST'])
 
@@ -83,11 +85,26 @@ def reset_password():
 #Forgot password when at login screen
 @app.route('/forgot_password', methods=['POST'])
 @role_required('existing_user')
-def forgot_password()
+def forgot_password():
     data = request.get_json()
     email = data.get('email')
-    current_password = data.get('current_password')
-    new_password = data.get('new_password')
-    confirm_password = data.get('confirm_password')
+    
+    user = User.query.filter_by(email=email).first()
+    
+    if not user:
+        return jsonify({'error': "Email address not found"}), 404
+    
+    token = s.dump(email, salt='password-reset-salt')
+    
+    link = url_for('main.reset_password', token=token, _external=True)
+    
+    msg = Message('Password Reset Request', sender='noreply@gmail.com', recipients=[email])
+    msg.body = f'Your link to reset your password is {link}'
+    
+    mail.send(msg)
+    
+    return jsonify({'message': 'Password reset link has been sent to your email'}), 200
+
+
     
     
