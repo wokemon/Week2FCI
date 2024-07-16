@@ -36,3 +36,8 @@ class Permission(db.Model):
     username = db.Column(db.String(80), unique=True, nullable=False)
     role_id = db.Column(db.Integer, db.ForeignKey('Role.id'), nullable=False)
 
+class Reservation(db.Model):
+    __tablename__ = "Hello"
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    role_id = db.Column(db.Integer, db.ForeignKey('Role.id'), nullable=False)
