@@ -7,6 +7,7 @@ bp = Blueprint('main', __name__)
 
 @app.route('/home', methods=['POST'])
 
+
 @app.route('/login', methods=['POST'])
 def login():
     data = request.get_json()
@@ -20,6 +21,7 @@ def login():
         return jsonify({'message': 'Login succesfully'}), 200
     else:
         return jsonify({'error': 'Invalid credentials'}), 401
+    
     
 @app.route('/logout', methods=['POST'])
 def logout():
@@ -49,6 +51,7 @@ def signup():
     except Exception as e:
         app.logger.error(f"Error adding user: {e}")
         return jsonify({'error': 'Failed to add user'}), 500
+
 
 @app.route('/change_password', methods=['POST'])
 @role_required('existing_user')
