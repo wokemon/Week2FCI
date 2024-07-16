@@ -3,8 +3,10 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from .models import User, db #import User and the database
 from .decorator import bp as main_bp #import permission
+from flask_mail import Mail
 
 db = SQLAlchemy()
+mail = Mail()
 
 url = 'mysql+mysqlconnector://root:PhanHieuNghia297!@localhost/users'
 
@@ -12,9 +14,15 @@ def create_app():
     app = Flask(__name__)
     app.config['SQLALCHEMY_DATABASE_URI'] = url
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+    app.config['MAIl_PORT'] = 587
+    app.config['MAIL_USE_TLS'] = True
+    app.config['MAIL_USERNAME'] = 'hieunghiabeo@gmail.com'
+    app.config['MAIL_PASSWORD'] = 'shadowkiller297' 
     app.secret_key = 'miralec2629'
 
     db.init_app(app)
+    mail.init_app(app)
     CORS(app)
 
     with app.app_context():
