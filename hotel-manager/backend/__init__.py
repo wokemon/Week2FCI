@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from .models import User, db #import User and the database
 from .decorator import bp as main_bp #import permission
+from local_settings import MAIL_PASSWORD
 
 db = SQLAlchemy()
 
@@ -16,7 +17,7 @@ def create_app():
     app.config['MAIl_PORT'] = 587
     app.config['MAIL_USE_TLS'] = True
     app.config['MAIL_USERNAME'] = 'hieunghiabeo@gmail.com'
-    app.config['MAIL_PASSWORD'] = '' 
+    app.config['MAIL_PASSWORD'] = MAIL_PASSWORD 
     app.secret_key = 'miralec2629'
 
     db.init_app(app)
