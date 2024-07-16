@@ -2,7 +2,7 @@ from flask import Flask, g, session, current_app as app
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
 from .models import User, db #import User and the database
-from .decorator import bp as main_bp
+from .decorator import bp as main_bp #import permission
 
 db = SQLAlchemy()
 

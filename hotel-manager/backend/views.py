@@ -2,8 +2,11 @@ from flask import jsonify, current_app as app, request, Blueprint, session
 from .models import User, db
 from .decorator import role_required
 from werkzeug.security import check_password_hash, generate_password_hash
+from flask_mail import Mail, Message
+from itsdangerous import URLSafeTimedSerializer, SignatureExpired
 
 bp = Blueprint('main', __name__)
+mail = Mail()
 
 @app.route('/home', methods=['POST'])
 
@@ -16,6 +19,7 @@ def login():
     
     user = User.query.filter_by(email=email).first()
     
+    #Check the hashed passwords
     if user and check_password_hash(user.password, password):
         session['user_id'] = user.id
         return jsonify({'message': 'Login succesfully'}), 200
@@ -33,18 +37,17 @@ def logout():
 @role_required('new_user')
 def signup():
     data = request.get_json()
-    first_name = data.get('first_name')
-    last_name = data.get('last_name')
+    username = request.get('username')
     email = data.get('email')
     password = data.get('password')
     role_id = data.get('role_id')
     
     
-    if not all([first_name, last_name, email, password, role_id]):
+    if not all([username, email, password, role_id]):
         return jsonify({"error": "All fields are required"}), 400
     
     try:
-        new_user = User(first_name=first_name, last_name=last_name, email=email, password=password, role_id=role_id)
+        new_user = User(username=username, email=email, password=password, role_id=role_id)
         db.session.add(new_user)
         db.session.commit()
         return jsonify({"message": "User added successfully!"}), 201
@@ -52,10 +55,10 @@ def signup():
         app.logger.error(f"Error adding user: {e}")
         return jsonify({'error': 'Failed to add user'}), 500
 
-
-@app.route('/change_password', methods=['POST'])
+#Reset password when logged in
+@app.route('/reset_password', methods=['POST'])
 @role_required('existing_user')
-def change_password():
+def reset_password():
     data = request.get_json()
     current_password = data.get('current_password')
     new_password = data.get('new_password')
@@ -76,3 +79,15 @@ def change_password():
     db.session.commit()
 
     return jsonify({"message": "Password changed successfully"}), 200
+
+#Forgot password when at login screen
+@app.route('/forgot_password', methods=['POST'])
+@role_required('existing_user')
+def forgot_password()
+    data = request.get_json()
+    email = data.get('email')
+    current_password = data.get('current_password')
+    new_password = data.get('new_password')
+    confirm_password = data.get('confirm_password')
+    
+    
