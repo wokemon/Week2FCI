@@ -56,3 +56,13 @@ class Room(db.Model):
     room_type = db.Column(db.String(80), nullable=False)
     availability = db.Column(db.Boolean, unique=False, default=True)
     room_id = db.Column(db.Integer, db.ForeignKey('Reservation.guest_id'), nullable=False)
+    
+class Service(db.Model):
+    __tablename__ = "Service"
+    
+    service_id = db.Column(db.Integer, primary_key=True)
+    #Type: Food, beverage, tailor, laundry, cleaning, valet
+    type = db.Column(db.String(80), unique=True, nullable=False)
+    availability = db.Column(db.Boolean, unique=False, default=True)
+    
+    

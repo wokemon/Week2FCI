@@ -30,6 +30,7 @@ def create_app():
         app.register_blueprint(views.bp)
     
         from .models import User #import User
+        db.drop_all()
         db.create_all()
     
     # Request function to load the user
