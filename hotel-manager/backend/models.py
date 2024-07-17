@@ -10,7 +10,7 @@ class User(db.Model):
     password = db.Column(db.String(255), nullable=False)
     role_id = db.Column(db.Integer, db.ForeignKey('Role.id'), nullable=False)
     
-    role = db.relationship("Role", backref="users")
+    role = db.relationship("Role", backref="user")
     
     def has_permission(self, permission_name):
         return any(permission.name == permission_name for permission in self.role.permissions)
@@ -37,7 +37,15 @@ class Permission(db.Model):
     role_id = db.Column(db.Integer, db.ForeignKey('Role.id'), nullable=False)
 
 class Reservation(db.Model):
-    __tablename__ = "Hello"
-    id = db.Column(db.Integer, primary_key=True)
-    username = db.Column(db.String(80), unique=True, nullable=False)
-    role_id = db.Column(db.Integer, db.ForeignKey('Role.id'), nullable=False)
+    __tablename__ = "Reservation"
+    
+    guest_id = db.Column(db.Integer, primary_key=True)
+    guest_first_name = db.Column(db.String(80), nullable=False)
+    guest_last_name = db.Column(db.String(80), nullable=False)
+    number_of_guest = db.Column(db.String(255), nullable=False)
+    guest_phone = db.Column(db.String(255), unique=True, nullable=False)
+    guest_email = db.Column(db.String(80), unique=True, nullable=False)
+    #Number from 1-6
+    room_number = db.Column(db.String(80), unique=True, nullable=False)
+    #Type: Pawn, Rook, Queen, King
+    room_type = db.Column(db.String(80), nullable=False)
