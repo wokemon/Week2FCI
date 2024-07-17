@@ -64,5 +64,5 @@ class Service(db.Model):
     #Type: Food, beverage, tailor, laundry, cleaning, valet
     type = db.Column(db.String(80), unique=True, nullable=False)
     availability = db.Column(db.Boolean, unique=False, default=True)
-    
+    assigned_id = db.Column(db.Integer, db.ForeignKey('Room.id'), nullable=False)
     
