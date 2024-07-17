@@ -39,13 +39,20 @@ class Permission(db.Model):
 class Reservation(db.Model):
     __tablename__ = "Reservation"
     
-    guest_id = db.Column(db.Integer, primary_key=True)
+    id = db.Column(db.Integer, primary_key=True)
     guest_first_name = db.Column(db.String(80), nullable=False)
     guest_last_name = db.Column(db.String(80), nullable=False)
     number_of_guest = db.Column(db.String(255), nullable=False)
     guest_phone = db.Column(db.String(255), unique=True, nullable=False)
     guest_email = db.Column(db.String(80), unique=True, nullable=False)
+    
+class Room(db.Model):
+    __tablename__ = "Room"
+    
+    id = db.Column(db.Integer, primary_key=True)
     #Number from 1-6
     room_number = db.Column(db.String(80), unique=True, nullable=False)
     #Type: Pawn, Rook, Queen, King
     room_type = db.Column(db.String(80), nullable=False)
+    availability = db.Column(db.Boolean, unique=False, default=True)
+    room_id = db.Column(db.Integer, db.ForeignKey('Reservation.id'), nullable=False)
