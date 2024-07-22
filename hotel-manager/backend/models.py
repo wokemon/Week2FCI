@@ -45,17 +45,18 @@ class Reservation(db.Model):
     number_of_guest = db.Column(db.String(255), nullable=False)
     guest_phone = db.Column(db.String(255), unique=True, nullable=False)
     guest_email = db.Column(db.String(80), unique=True, nullable=False)
+    room_id = db.Column(db.Integer, db.ForeignKey('Room.room_id'), nullable=False)
     
 class Room(db.Model):
     __tablename__ = "Room"
     
-    id = db.Column(db.Integer, primary_key=True)
+    room_id = db.Column(db.Integer, primary_key=True)
     #Number from 1-6
     room_number = db.Column(db.String(80), unique=True, nullable=False)
     #Type: Pawn, Rook, Queen, King
     room_type = db.Column(db.String(80), nullable=False)
     availability = db.Column(db.Boolean, unique=False, default=True)
-    room_id = db.Column(db.Integer, db.ForeignKey('Reservation.guest_id'), nullable=False)
+    service_id = db.Column(db.Integer, db.ForeignKey('Service.service_id'), nullable=False)
     
 class Service(db.Model):
     __tablename__ = "Service"
@@ -64,5 +65,5 @@ class Service(db.Model):
     #Type: Food, beverage, tailor, laundry, cleaning, valet
     type = db.Column(db.String(80), unique=True, nullable=False)
     availability = db.Column(db.Boolean, unique=False, default=True)
-    assigned_id = db.Column(db.Integer, db.ForeignKey('Room.id'), nullable=False)
+    
     
