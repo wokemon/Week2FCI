@@ -1,8 +1,13 @@
 from flask import Flask, g, session
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+<<<<<<< HEAD
 import backend.local_settings
 from flask_mail import Mail
+=======
+from .models import User, db #import User and the database
+from .decorator import bp as main_bp
+>>>>>>> parent of eb5da28 (Add imports; install Flask-Mail)
 
 db = SQLAlchemy()
 mail = Mail()
