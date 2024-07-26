@@ -13,13 +13,6 @@ const theme = createTheme({
     color: {
       text: "white"
     }
-  },
-
-  button: {
-    fontFamily: [
-      'Times New Roman',
-      'serif'
-    ].join(',')
   }
 });
 
@@ -29,13 +22,12 @@ export default function AppNav() {
       <Box sx={{ flexGrow: 1, border: 0 }}>
       <AppBar position="static" sx={{background: 'transparent', boxShadow: 'none'}}>
         <Toolbar>
-          <Typography variant="h6" sx={{ flexGrow: 1}} color={'#1976D2'}>
+          <Typography variant="h4" sx={{ flexGrow: 1}} color={'#1976D2'}>
             
           </Typography>
           <Stack direction={'row'} spacing={'0.5'} alignContent={'flex-end'}>
             <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>About us</Button>
             <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>Services</Button>
-            <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>Blog</Button>
             <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>Contact us</Button>
             <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>Sign up</Button>
             <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>Sign in</Button>
