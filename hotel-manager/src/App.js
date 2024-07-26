@@ -34,6 +34,8 @@ const MyComponent = styled('div')({
   backgroundImage: `url(${bg})`,
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
+  backgroundPosition: 'center',
+  height: '100%',
 });
 export default function App() {
   return (
