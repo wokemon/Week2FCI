@@ -28,6 +28,7 @@ import React from 'react';
 import { styled } from '@mui/system';
 import bg from './assets/bg.jpg';
 import AppNav from './components/Navbar';
+import StickyFooter from './components/Footer';
 
 const MyComponent = styled('div')({
   minHeight: '100vh',
@@ -36,11 +37,13 @@ const MyComponent = styled('div')({
   backgroundSize: 'cover',
   backgroundPosition: 'center',
   height: '100%',
+  overflow: 'hidden',
 });
 export default function App() {
   return (
     <MyComponent>
       <AppNav></AppNav>
+      <StickyFooter></StickyFooter>
     </MyComponent>
   )
 }
