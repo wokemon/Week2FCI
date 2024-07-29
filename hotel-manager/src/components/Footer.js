@@ -42,7 +42,7 @@ export default function StickyFooter() {
             py: 0,
             px: 2,
             mt:'auto',
-            backgroundColor: 'gray',
+            backgroundColor: '#383b38',
             textAlign: 'center',
             }}
         >

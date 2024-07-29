@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import { createTheme, Stack } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
-//import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink } from 'react-router-dom';
 
 const theme = createTheme({
   palette: {
@@ -30,7 +30,7 @@ export default function AppNav() {
             <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>Services</Button>
             <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>Contact us</Button>
             <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>Sign up</Button>
-            <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>Sign in</Button>
+            <Button sx={{ color: 'color.text'}} variant='text' component= {RouterLink} to="/login">Sign in</Button>
           </Stack>
         </Toolbar>
       </AppBar>

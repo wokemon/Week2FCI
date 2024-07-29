@@ -25,25 +25,17 @@
 // export default App;
 
 import React from 'react';
-import { styled } from '@mui/system';
-import bg from './assets/bg.jpg';
-import AppNav from './components/Navbar';
-import StickyFooter from './components/Footer';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import SignIn from './components/Login';
+import Landing from './components/Landing';
 
-const MyComponent = styled('div')({
-  minHeight: '100vh',
-  backgroundImage: `url(${bg})`,
-  backgroundRepeat: 'no-repeat',
-  backgroundSize: 'cover',
-  backgroundPosition: 'center',
-  height: '100%',
-  overflow: 'hidden',
-});
 export default function App() {
   return (
-    <MyComponent>
-      <AppNav></AppNav>
-      <StickyFooter></StickyFooter>
-    </MyComponent>
+    <BrowserRouter>
+    <Landing></Landing>
+    <Routes>
+      <Route path='/login' element={<SignIn/>}></Route>
+    </Routes>
+    </BrowserRouter>
   )
 }
