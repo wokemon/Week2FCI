@@ -26,9 +26,9 @@ export default function AppNav() {
             
           </Typography>
           <Stack direction={'row'} spacing={'0.5'} alignContent={'flex-end'}>
-            <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>About us</Button>
+            <Button sx={{ color: 'color.text'}} variant='text' component= {RouterLink} to='/'>Home</Button>
+            <Button sx={{ color: 'color.text' }} variant='text' /*component= {RouterLink} to="/login"*/>About us</Button>
             <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>Services</Button>
-            <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>Contact us</Button>
             <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>Sign up</Button>
             <Button sx={{ color: 'color.text'}} variant='text' component= {RouterLink} to="/login">Sign in</Button>
           </Stack>

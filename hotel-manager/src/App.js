@@ -32,8 +32,8 @@ import Landing from './components/Landing';
 export default function App() {
   return (
     <BrowserRouter>
-    <Landing></Landing>
     <Routes>
+      <Route path='/' element={<Landing/>}></Route>
       <Route path='/login' element={<SignIn/>}></Route>
     </Routes>
     </BrowserRouter>

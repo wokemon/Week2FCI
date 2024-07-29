@@ -14,6 +14,7 @@ import Lock from '@mui/icons-material/Lock';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import AppNav from './Navbar';
 
 function Copyright(props) {
   return (
@@ -57,7 +58,8 @@ export default function SignIn() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Container component="main" maxWidth="xs">
+      <AppNav></AppNav>
+      <Container maxWidth='sm' component="main">
         <CssBaseline />
         <Box
           sx={{
