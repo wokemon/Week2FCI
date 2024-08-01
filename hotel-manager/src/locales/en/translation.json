@@ -4,5 +4,6 @@
   "services" : "Services",
   "sign_in": "Sign In",
   "sign_up": "Sign Up",
-  "reset_password": "Reset Password"
+  "reset_password": "Reset Password",
+  "languages": "Languages"
 }
