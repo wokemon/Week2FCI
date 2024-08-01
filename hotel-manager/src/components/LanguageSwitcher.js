@@ -27,8 +27,8 @@ function LanguageSwitcher() {
     <PopupState variant="popover" popupId="demo-popup-menu">
       {(popupState) => (
         <React.Fragment>
-          <Button variant="contained" {...bindTrigger(popupState)}>
-            Dashboard
+          <Button variant="contained" sx={{fontSize: '12px'}} {...bindTrigger(popupState)}>
+            Languages
           </Button>
           <Menu {...bindMenu(popupState)}>
             <MenuItem onClick={() => handleClick('en', popupState)}>English</MenuItem>

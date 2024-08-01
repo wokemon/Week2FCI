@@ -4,10 +4,6 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import Link from '@mui/material/Link';
-import EmailIcon from '@mui/icons-material/Email';
-import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
 import LanguageSwitcher from './LanguageSwitcher';
 
 function Copyright() {
@@ -47,12 +43,8 @@ export default function StickyFooter() {
             textAlign: 'center',
             }}
         >
-            <EmailIcon></EmailIcon>
-            <PhoneEnabledIcon></PhoneEnabledIcon>
-            <FacebookIcon></FacebookIcon>
-            <InstagramIcon></InstagramIcon>
-            <Copyright />
             <LanguageSwitcher></LanguageSwitcher>
+            <Copyright />
           </Box>
         </Box>
     </ThemeProvider>
