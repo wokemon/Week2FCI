@@ -1,6 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
-import { Button, ButtonGroup } from '@mui/material';
+import { Button } from '@mui/material';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
@@ -27,7 +27,7 @@ function LanguageSwitcher() {
     <PopupState variant="popover" popupId="demo-popup-menu">
       {(popupState) => (
         <React.Fragment>
-          <Button variant="contained" sx={{fontSize: '12px'}} {...bindTrigger(popupState)}>
+          <Button variant="contained" sx={{fontSize: '12px', marginTop: '5px'}} {...bindTrigger(popupState)}>
             Languages
           </Button>
           <Menu {...bindMenu(popupState)}>
