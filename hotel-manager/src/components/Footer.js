@@ -29,7 +29,8 @@ export default function StickyFooter() {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          height: '88.5vh',
+          minHeight: '93.2vh',
+          width: '100%'
         }}
       >
         <CssBaseline />
@@ -41,6 +42,8 @@ export default function StickyFooter() {
             mt:'auto',
             backgroundColor: '#383b38',
             textAlign: 'center',
+            position: 'dynamic',
+            width: '100%',
             }}
         >
             <LanguageSwitcher></LanguageSwitcher>

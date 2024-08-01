@@ -6,7 +6,7 @@ import Backend from 'i18next-xhr-backend';
 const resources = {
   en: {
     translation: {
-      "welcome": "Welcome",
+      "home": "Home",
       "about_us" : "About Us",
       "services" : "Services",
       "sign_in": "Sign In",
@@ -17,7 +17,7 @@ const resources = {
   },
   vi: {
     translation: {
-      "welcome": "Chào mừng",
+      "home": "Trang chủ",
       "about_us" : "Về chúng tôi",
       "services" : "Dịch vụ",
       "sign_in": "Đăng nhập",

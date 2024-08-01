@@ -22,7 +22,7 @@ function LanguageSwitcher() {
           </Button>
           <Menu {...bindMenu(popupState)}>
             <MenuItem onClick={() => changeLanguage('en', popupState)}>English</MenuItem>
-            <MenuItem onClick={() => changeLanguage('vn', popupState)}>Tiếng Việt</MenuItem>
+            <MenuItem onClick={() => changeLanguage('vi', popupState)}>Tiếng Việt</MenuItem>
             <MenuItem onClick={() => changeLanguage('es', popupState)}>Espanol</MenuItem>
             <MenuItem onClick={() => changeLanguage('fr', popupState)}>French</MenuItem>
           </Menu>
