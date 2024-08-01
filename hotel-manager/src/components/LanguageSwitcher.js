@@ -6,29 +6,25 @@ import MenuItem from '@mui/material/MenuItem';
 import PopupState, { bindTrigger, bindMenu } from 'material-ui-popup-state';
 
 function LanguageSwitcher() {
-  const { i18n } = useTranslation();
+  const { i18n }  = useTranslation();
 
-  const changeLanguage = (lang) => {
+  const changeLanguage = (lang, popupState) => {
     i18n.changeLanguage(lang);
+    popupState.close();
   };
 
   return (
-    // <ButtonGroup variant="contained" aria-label="outlined primary button group">
-    //   <Button onClick={() => changeLanguage('en')}>English</Button>
-    //   <Button onClick={() => changeLanguage('vi')}>Tiếng Việt</Button>
-    // </ButtonGroup>
-
-    <PopupState variant="popover" popupId="demo-popup-menu">
+    <PopupState variant="popover" popupId="language-menu">
       {(popupState) => (
         <React.Fragment>
           <Button variant="contained" sx={{fontSize: '12px', marginTop: '5px'}} {...bindTrigger(popupState)}>
             Languages
           </Button>
           <Menu {...bindMenu(popupState)}>
-            <MenuItem onClick={() => {changeLanguage('en'); popupState.close()}}>English</MenuItem>
-            <MenuItem onClick={() => {changeLanguage('vn'); popupState.close()}}>Tiếng Việt</MenuItem>
-            <MenuItem onClick={() => {changeLanguage('es'); popupState.close()}}>Espanol</MenuItem>
-            <MenuItem onClick={() => {changeLanguage('fr'); popupState.close()}}>French</MenuItem>
+            <MenuItem onClick={() => changeLanguage('en', popupState)}>English</MenuItem>
+            <MenuItem onClick={() => changeLanguage('vn', popupState)}>Tiếng Việt</MenuItem>
+            <MenuItem onClick={() => changeLanguage('es', popupState)}>Espanol</MenuItem>
+            <MenuItem onClick={() => changeLanguage('fr', popupState)}>French</MenuItem>
           </Menu>
         </React.Fragment>
       )}

@@ -31,7 +31,7 @@ export default function AppNav() {
             <Button sx={{ color: 'color.text'}} variant='text' component= {RouterLink} to='/'>{t('home')}</Button>
             <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>{t('about_us')}</Button>
             <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>{t('services')}</Button>
-            <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>{t('sign_up)')}</Button>
+            <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>{t('sign_up')}</Button>
             <Button sx={{ color: 'color.text'}} variant='text' component= {RouterLink} to="/login">{t('sign_in')}</Button>
           </Stack>
         </Toolbar>
