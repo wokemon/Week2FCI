@@ -12,12 +12,6 @@ function LanguageSwitcher() {
     i18n.changeLanguage(lang);
   };
 
-  const handleClick = (lang, popupState) => {
-    changeLanguage(lang);
-    popupState.close();
-  }
-
-
   return (
     // <ButtonGroup variant="contained" aria-label="outlined primary button group">
     //   <Button onClick={() => changeLanguage('en')}>English</Button>
