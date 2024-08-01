@@ -8,6 +8,7 @@ import EmailIcon from '@mui/icons-material/Email';
 import PhoneEnabledIcon from '@mui/icons-material/PhoneEnabled';
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
+import LanguageSwitcher from './LanguageSwitcher';
 
 function Copyright() {
   return (
@@ -51,6 +52,7 @@ export default function StickyFooter() {
             <FacebookIcon></FacebookIcon>
             <InstagramIcon></InstagramIcon>
             <Copyright />
+            <LanguageSwitcher></LanguageSwitcher>
           </Box>
         </Box>
     </ThemeProvider>

@@ -14,6 +14,8 @@ function LanguageSwitcher() {
       <Button onClick={() => changeLanguage('en')}>English</Button>
       <Button onClick={() => changeLanguage('vi')}>Tiếng Việt</Button>
     </ButtonGroup>
+
+    
   );
 }
 
