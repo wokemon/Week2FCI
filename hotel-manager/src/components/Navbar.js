@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import { createTheme, Stack } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 import { Link as RouterLink } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 const theme = createTheme({
   palette: {
@@ -17,6 +18,7 @@ const theme = createTheme({
 });
 
 export default function AppNav() {
+  const { t } = useTranslation();
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ flexGrow: 1, border: 0 }}>
@@ -26,11 +28,11 @@ export default function AppNav() {
             
           </Typography>
           <Stack direction={'row'} spacing={'0.5'} alignContent={'flex-end'}>
-            <Button sx={{ color: 'color.text'}} variant='text' component= {RouterLink} to='/'>Home</Button>
-            <Button sx={{ color: 'color.text' }} variant='text' /*component= {RouterLink} to="/login"*/>About us</Button>
-            <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>Services</Button>
-            <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>Sign up</Button>
-            <Button sx={{ color: 'color.text'}} variant='text' component= {RouterLink} to="/login">Sign in</Button>
+            <Button sx={{ color: 'color.text'}} variant='text' component= {RouterLink} to='/'>{t('home')}</Button>
+            <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>{t('about_us')}</Button>
+            <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>{t('services')}</Button>
+            <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>{t('sign_up)')}</Button>
+            <Button sx={{ color: 'color.text'}} variant='text' component= {RouterLink} to="/login">{t('sign_in')}</Button>
           </Stack>
         </Toolbar>
       </AppBar>

@@ -31,9 +31,10 @@ function LanguageSwitcher() {
             Languages
           </Button>
           <Menu {...bindMenu(popupState)}>
-            <MenuItem onClick={() => handleClick('en', popupState)}>English</MenuItem>
-            <MenuItem onClick={() => handleClick('vn', popupState)}>Vietnamese</MenuItem>
-            <MenuItem onClick={() => handleClick('es', popupState)}>Espanol</MenuItem>
+            <MenuItem onClick={() => {changeLanguage('en'); popupState.close()}}>English</MenuItem>
+            <MenuItem onClick={() => {changeLanguage('vn'); popupState.close()}}>Vietnamese</MenuItem>
+            <MenuItem onClick={() => {changeLanguage('es'); popupState.close()}}>Espanol</MenuItem>
+            <MenuItem onClick={() => {changeLanguage('fr'); popupState.close()}}>French</MenuItem>
           </Menu>
         </React.Fragment>
       )}

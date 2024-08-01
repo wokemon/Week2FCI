@@ -3,6 +3,8 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import enTranslation from './locales/en/translation.json';
 import viTranslation from './locales/vi/translation.json';
+import esTranslation from './locales/es/translation.json';
+import frTranslation from './locales/fr/translation.json'
 
 const resources = {
   en: {
@@ -11,6 +13,12 @@ const resources = {
   vi: {
     translation: viTranslation,
   },
+  es: {
+    translation: esTranslation,
+  },
+  fr: {
+    translation: frTranslation,
+  }
 };
 
 i18n

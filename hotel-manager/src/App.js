@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import SignIn from './components/Login';
 import Landing from './components/Landing';
-import './i18n'; //init this
+
 
 export default function App() {
   return (
