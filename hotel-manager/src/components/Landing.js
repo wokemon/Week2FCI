@@ -13,10 +13,15 @@ const MyComponent = styled('div')({
   overflow: 'hidden',
 });
 
+const WelcomeText = styled('div')({
+    textAlign: 'right',
+});
+
 export default function Landing() {
     return (
         <MyComponent>
             <AppNav></AppNav>
+            <WelcomeText></WelcomeText>
             <StickyFooter></StickyFooter>
         </MyComponent>
     )
