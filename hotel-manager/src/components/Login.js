@@ -15,23 +15,13 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import AppNav from './Navbar';
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://github.com/wokemon" target="_blank">
-        AlecPhan
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
+import StickyFooter from './Footer';
+import { useTranslation } from 'react-i18next';
 
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+  const { t } = useTranslation();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
@@ -73,7 +63,7 @@ export default function SignIn() {
             <Lock />
           </Avatar>
           <Typography component="h1" variant="h5">
-            Sign in
+            {t('sign_in')}
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -81,7 +71,7 @@ export default function SignIn() {
               required
               fullWidth
               id="email"
-              label="Email Address"
+              label={t('email')}
               name="email"
               autoComplete="email"
               value={email}
@@ -93,7 +83,7 @@ export default function SignIn() {
               required
               fullWidth
               name="password"
-              label="Password"
+              label={t("password")}
               type="password"
               id="password"
               autoComplete="current-password"
@@ -102,7 +92,7 @@ export default function SignIn() {
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
+              label={t('remember_me')}
             />
             <Button
               type="submit"
@@ -110,23 +100,28 @@ export default function SignIn() {
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
-              Sign In
+              {t('sign_in')}
             </Button>
             <Grid container>
               <Grid item xs>
                 <Link component={RouterLink} to="reset" variant="body2">
-                  Forgot password?
+                  {t('forgot_password')}
                 </Link>
               </Grid>
               <Grid item>
                 <Link component={RouterLink} to="signup" variant="body2">
-                  {"Don't have an account? Sign Up"}
+                  {t('no_account')}
                 </Link>
               </Grid>
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 8, mb: 4 }} />
+        <Box sx={{
+          width: '100%',
+          maxHeight: '10px',
+        }}>
+        </Box>
+        <StickyFooter/>
       </Container>
     </ThemeProvider>
   );

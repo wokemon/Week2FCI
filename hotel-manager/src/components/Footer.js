@@ -10,7 +10,7 @@ function Copyright() {
   return (
     <Typography variant="body2" sx={{color: 'white'}} textAlign={"center"}>
       {'Copyright © '}
-      <Link color="inherit" href="https://github.com/wokemon">
+      <Link color="inherit" href="https://github.com/wokemon" target="_blank">
         AlecPhan
       </Link>{' '}
       {new Date().getFullYear()}
@@ -29,7 +29,7 @@ export default function StickyFooter() {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          minHeight: '93.2vh',
+          minHeight: '70vh',
           width: '100%'
         }}
       >
