@@ -15,13 +15,15 @@ const MyComponent = styled('div')({
 
 const WelcomeText = styled('div')({
     textAlign: 'right',
+    marginRight: '30px',
+    textSizeAdjust: 'auto',
 });
 
 export default function Landing() {
     return (
         <MyComponent>
             <AppNav></AppNav>
-            <WelcomeText></WelcomeText>
+            <WelcomeText>Welcome to the site</WelcomeText>
             <StickyFooter></StickyFooter>
         </MyComponent>
     )

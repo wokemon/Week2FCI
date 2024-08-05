@@ -27,7 +27,7 @@ export default function AppNav() {
           <Typography variant="h4" sx={{ flexGrow: 1}} color={'#1976D2'}>
             
           </Typography>
-          <Stack direction={'row'} spacing={'0.5'} alignContent={'flex-end'}>
+          <Stack direction={{xs: 'column', md: 'row'}} spacing={'0.5'} alignContent={'flex-end'}>
             <Button sx={{ color: 'color.text'}} variant='text' component= {RouterLink} to='/'>{t('home')}</Button>
             <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>{t('about_us')}</Button>
             <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>{t('services')}</Button>
