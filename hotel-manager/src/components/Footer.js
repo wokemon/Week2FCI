@@ -29,7 +29,7 @@ export default function StickyFooter() {
         sx={{
           display: 'flex',
           flexDirection: 'column',
-          minHeight: '100vh',
+          minHeight: '10vh',
           width: '100%'
         }}
       >
@@ -40,7 +40,7 @@ export default function StickyFooter() {
             py: 0,
             px: 2,
             mt:'auto',
-            backgroundColor: '#383b38',
+            backgroundColor: 'translucent',
             textAlign: 'center',
             position: 'dynamic',
             width: '100%',

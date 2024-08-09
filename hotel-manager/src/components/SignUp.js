@@ -12,6 +12,9 @@ import Lock from '@mui/icons-material/Lock';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import StickyFooter from './Footer';
+import { AppBar } from '@mui/material';
+import AppNav from './Navbar';
 
 function Copyright(props) {
   return (
@@ -58,6 +61,7 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
+      <AppNav/>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
         <Box
@@ -76,7 +80,7 @@ export default function SignUp() {
           </Typography>
           <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
             <Grid container spacing={2}>
-              <Grid item xs={12} sm={6}>
+              <Grid item xs={12}>
                 <TextField
                   autoComplete="given-name"
                   name="username"
@@ -133,7 +137,7 @@ export default function SignUp() {
             </Grid>
           </Box>
         </Box>
-        <Copyright sx={{ mt: 5 }} />
+        <StickyFooter/>
       </Container>
     </ThemeProvider>
   );
