@@ -13,21 +13,7 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import StickyFooter from './Footer';
-import { AppBar } from '@mui/material';
 import AppNav from './Navbar';
-
-function Copyright(props) {
-  return (
-    <Typography variant="body2" color="text.secondary" align="center" {...props}>
-      {'Copyright © '}
-      <Link color="inherit" href="https://facebook.com/profile" target="_blank">
-        Hieu Nghia Phan
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
 
 const defaultTheme = createTheme();
 
@@ -61,9 +47,9 @@ export default function SignUp() {
 
   return (
     <ThemeProvider theme={defaultTheme}>
-      <AppNav/>
+      <AppNav />
+      <CssBaseline />
       <Container component="main" maxWidth="xs">
-        <CssBaseline />
         <Box
           sx={{
             marginTop: 8,
