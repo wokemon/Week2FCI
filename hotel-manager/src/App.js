@@ -9,9 +9,9 @@ export default function App() {
   return (
     <BrowserRouter>
     <Routes>
-      <Route path='/' element={<Landing/>}></Route>
-        <Route path='/login' element={<SignIn />}></Route>
-        <Route path='/login/signup' element={<SignUp />}></Route>
+      <Route path='/' element={<Landing />}></Route>
+      <Route path='/login' element={<SignIn />}></Route>
+      <Route path='/login/signup' element={<SignUp />}></Route>
     </Routes>
     </BrowserRouter>
   )
