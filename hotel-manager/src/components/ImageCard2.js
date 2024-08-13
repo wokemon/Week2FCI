@@ -5,14 +5,14 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 
-export default function Owner() {
+export default function Concierge() {
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="140"
-          image={require('../assets/winston.jpg')}
+          image={require('../assets/charon.jpg')}
           alt="owner of the continental"
         />
         <CardContent>
