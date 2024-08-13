@@ -4,7 +4,7 @@ import AppNav from './Navbar';
 import StickyFooter from './Footer';
 import Owner from './ImageCard';
 import Concierge from './ImageCard2';
-import { Box, Grid } from '@mui/material';
+import { Grid } from '@mui/material';
 
 const MyComponent = styled('div')({
   minHeight: '100vh',
@@ -14,12 +14,6 @@ const MyComponent = styled('div')({
   backgroundPosition: 'center',
   height: '100%',
   overflow: 'hidden',
-});
-
-const WelcomeText = styled('div')({
-    textAlign: 'right',
-    marginRight: '30px',
-    textSizeAdjust: 'auto',
 });
 
 export default function Landing() {
