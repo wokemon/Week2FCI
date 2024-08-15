@@ -6,20 +6,20 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 
-export default function Owner() {
+export default function FB() {
   const { t } = useTranslation();
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 250 }}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="140"
-          image={require('../assets/fb.jpg')}
+          image={require('../assets/f&b.jpg')}
           alt="owner of the continental"
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Winston Scott
+            Food & beverage service
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('fb')}
