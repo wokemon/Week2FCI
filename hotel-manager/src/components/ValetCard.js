@@ -19,7 +19,7 @@ export default function Valet() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Valet service
+            {t('valet_name')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('valet')}

@@ -19,7 +19,7 @@ export default function FB() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Food & beverage service
+            {t('fb_name')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('fb')}

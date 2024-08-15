@@ -19,7 +19,7 @@ export default function Laundry() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Laundry service
+            {t('laundry_name')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('laundry')}

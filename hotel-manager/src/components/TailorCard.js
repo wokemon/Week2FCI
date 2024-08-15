@@ -19,7 +19,7 @@ export default function Tailor() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Tailoring service
+            {t('tailor_name')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('tailor')}

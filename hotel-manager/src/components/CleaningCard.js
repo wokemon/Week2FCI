@@ -19,7 +19,7 @@ export default function Cleaning() {
         />
         <CardContent>
           <Typography gutterBottom variant="h5" component="div">
-            Cleaning service
+            {t('cleaning_name')}
           </Typography>
           <Typography variant="body2" color="text.secondary">
             {t('cleaning')}
