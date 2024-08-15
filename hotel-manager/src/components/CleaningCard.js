@@ -22,7 +22,7 @@ export default function Owner() {
             Winston Scott
           </Typography>
           <Typography variant="body2" color="text.secondary">
-            {t('winston')}
+            {t('cleaning')}
           </Typography>
         </CardContent>
       </CardActionArea>
