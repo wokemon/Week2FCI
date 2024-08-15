@@ -29,7 +29,7 @@ export default function AppNav() {
           </Typography>
           <Stack direction={{xs: 'column', md: 'row'}} spacing={'0.5'} alignContent={'flex-end'}>
             <Button sx={{ color: 'color.text'}} variant='text' component= {RouterLink} to='/'>{t('home')}</Button>
-            <Button sx={{ color: 'color.text'}} variant='text' /*component= {RouterLink} to="/login"*/>{t('services')}</Button>
+            <Button sx={{ color: 'color.text'}} variant='text' component= {RouterLink} to="/service">{t('services')}</Button>
             <Button sx={{ color: 'color.text'}} variant='text' component= {RouterLink} to="/login/signup">{t('sign_up')}</Button>
             <Button sx={{ color: 'color.text'}} variant='text' component= {RouterLink} to="/login">{t('sign_in')}</Button>
           </Stack>
