@@ -1,5 +1,5 @@
 from . import db
-import datetime
+from datetime import datetime
 from sqlalchemy import DateTime
 from werkzeug.security import generate_password_hash
 
@@ -11,10 +11,17 @@ class User(db.Model):
     email = db.Column(db.String(80), unique=True, nullable=False)
     password = db.Column(db.String(255), nullable=False)
     role_id = db.Column(db.Integer, db.ForeignKey('role.role_id'),unique=False, nullable=False)
-    created_at = db.Column(DateTime, default=datetime.datetime.now)
-    updated_at = db.Column(DateTime, default=datetime.now, onupdate=datetime.now)
-    
-    roles = db.relationship('role', backref='user')
+    created_at = db.Column(DateTime, default=datetime.now())
+    updated_at = db.Column(DateTime, default=datetime.now(), onupdate=datetime.now())
+
+    #one to one relationship with reservation
+    user_reservation = db.relationship('reservation', backref='user', uselist=False)
+
+    #one to one relationship with audit log
+    user_audit = db.relationship('audit_log', backref='user', uselist=False)
+
+    #one to one relationship with serive request
+    user_service_request = db.relationship('service_request', backref='user', uselist=False)
 
     def __init__ (self, username, mail, password, role_id):
         self.username = username
@@ -31,7 +38,10 @@ class Role(db.Model):
     description = db.Column(db.String(255), nullable=True)
 
     #one to one with role_permission
-    role = db.relationship('role_permission', backref='role', uselist=False)
+    role_role_permission = db.relationship('role_permission', backref='role', uselist=False)
+
+    #one to many relationship with role table, an user can have many role
+    roles = db.relationship('role', backref='role')
     
 class Permission(db.Model):
     __tablename__ = "permission"
@@ -40,10 +50,10 @@ class Permission(db.Model):
     description = db.Column(db.String(255), nullable=True)
 
     #one to one with role_permission
-    permission = db.relationship('role_permission', backref='permission', uselist=False)
+    permission_role_permission = db.relationship('role_permission', backref='permission', uselist=False)
 
 class Role_permission(db.Model):
-    __tablename__ = "role permission"
+    __tablename__ = "role_permission"
 
     role_permission_id = db.Column(db.Integer, primary_key=True)
     role_id = db.Column(db.Integer, db.ForeignKey('role.role_id'))
@@ -55,12 +65,12 @@ class Reservation(db.Model):
     reservation_id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
     room_id = db.Column(db.Integer, db.ForeignKey('room.room_id'), nullable=False)
-    check_in_date = db.Column(DateTime, default=datetime.datetime.now)
-    check_out_date = db.Column(DateTime, default=datetime.now, onupdate=datetime.now)
+    check_in_date = db.Column(DateTime, default=datetime.now())
+    check_out_date = db.Column(DateTime, default=datetime.now(), onupdate=datetime.now())
     status = db.Column(db.String(100), nullable=False, unique=False)
-    total_price = db.Column(db.Decimal, nullable=False)
-    created_at = db.Column(DateTime, default=datetime.datetime.now)
-    updated_at = db.Column(DateTime, default=datetime.now, onupdate=datetime.now)
+    total_price = db.Column(db.Numeric(10,2), nullable=False)
+    created_at = db.Column(DateTime, default=datetime.now())
+    updated_at = db.Column(DateTime, default=datetime.now(), onupdate=datetime.now())
     
 class Room(db.Model):
     __tablename__ = "room"
@@ -71,10 +81,16 @@ class Room(db.Model):
     #Type: Pawn, Rook, Queen, King
     room_type = db.Column(db.String(80), nullable=False)
     status = db.Column(db.Boolean, unique=False)
-    price = db.Column(db.Decimal, nullable=False)
+    price = db.Column(db.Numeric(10,2), nullable=False)
     description = db.Column(db.String(255), nullable=False)
-    created_at = db.Column(DateTime, default=datetime.datetime.now)
-    updated_at = db.Column(DateTime, default=datetime.now, onupdate=datetime.now)
+    created_at = db.Column(DateTime, default=datetime.now())
+    updated_at = db.Column(DateTime, default=datetime.now(), onupdate=datetime.now())
+
+    #one to one relationship with reservation
+    room_reservation = db.relationship('reservation', backref='room', uselist=False)
+
+    #one to many relationship with service_request
+    room_service_request = db.relationship('service_request', backref='room')
     
 class Service(db.Model):
     __tablename__ = "service"
@@ -83,15 +99,26 @@ class Service(db.Model):
     #Type: Food, beverage, tailor, laundry, cleaning, valet
     service_name = db.Column(db.String(80), unique=True, nullable=False)
     description = db.Column(db.String(255), unique=False)
-    price = db.Column(db.Decimal, nullable=False)
+    price = db.Column(db.Numeric(10,2), nullable=False)
+
+    #one to one with service request
+    service_service_request = db.relationship('service_request', backref='service', uselist=False)
 
 class Service_request(db.Model):
-    __tablename__ = "service request"
+    __tablename__ = "service_request"
     
     request_id = db.Column(db.Integer, primary_key=True)
-    service_id = db.Column(db.Integer, db.ForeignKey('service.sevice_id'), nullable=False)
+    service_id = db.Column(db.Integer, db.ForeignKey('service.service_id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
     room_id = db.Column(db.Integer, db.ForeignKey('room.room_id'), nullable=False)
     status = db.Column(db.String(255), unique=True, nullable=False)
-    created_at = db.Column(DateTime, default=datetime.datetime.now)
-    updated_at = db.Column(DateTime, default=datetime.now, onupdate=datetime.now)
+    created_at = db.Column(DateTime, default=datetime.now())
+    updated_at = db.Column(DateTime, default=datetime.now(), onupdate=datetime.now())
+
+class Audit_log(db.Model):
+    __tablename__ = "audit_log"
+
+    log_id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.user_id'), nullable=False)
+    action = db.Column(db.String(100), nullable=False)
+    timestamp = db.Column(DateTime, default=datetime.now())
