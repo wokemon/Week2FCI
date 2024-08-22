@@ -18,7 +18,11 @@ import AppNav from './Navbar';
 import StickyFooter from './Footer';
 import { useTranslation } from 'react-i18next';
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+  pallete: {
+    mode: 'light'
+  }
+});
 
 export default function SignIn() {
   const { t } = useTranslation();

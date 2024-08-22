@@ -2,9 +2,7 @@ import { styled } from '@mui/system';
 import bg from '../assets/bg.jpg';
 import AppNav from './Navbar';
 import StickyFooter from './Footer';
-import Owner from './ImageCard';
-import Concierge from './ImageCard2';
-import { Grid } from '@mui/material';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const MyComponent = styled('div')({
   minHeight: '100vh',
@@ -16,19 +14,19 @@ const MyComponent = styled('div')({
   overflow: 'hidden',
 });
 
+const darkTheme = createTheme({
+    palette: {
+        mode: 'dark'
+    }
+});
+
 export default function Landing() {
     return (
-        <MyComponent>
-            <AppNav></AppNav>
-            <Grid container spacing={4} sx={{ml: '105vh', mt: 'auto'}} columnSpacing={2}>
-                <Grid item xs={3}>
-                    <Owner/>
-                </Grid>
-                <Grid item xs={3}>
-                    <Concierge/>
-                </Grid>
-            </Grid>
-            <StickyFooter></StickyFooter>
-        </MyComponent>
+        <ThemeProvider theme={darkTheme}>
+            <MyComponent>
+                <AppNav></AppNav>
+                <StickyFooter></StickyFooter>
+            </MyComponent>
+        </ThemeProvider>
     )
 }

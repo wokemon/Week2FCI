@@ -17,12 +17,14 @@ import ListItemText from '@mui/material/ListItemText';
 import i18next from 'i18next'
 import HomeIcon from '@mui/icons-material/Home';
 import RoomServiceIcon from '@mui/icons-material/RoomService';
+import MenuIcon from '@mui/icons-material/Menu';
 
 const theme = createTheme({
   palette: {
     color: {
-      text: "black"
-    }
+      text: "white"
+    },
+    mode: 'dark'
   }
 });
 
@@ -42,7 +44,7 @@ export default function AppNav() {
           <ListItemIcon>
             <HomeIcon/>
           </ListItemIcon>
-          <ListItemText primary={i18next.t('home')}/>
+          <ListItemText primary={i18next.t('home')} sx={{color: 'white'}}/>
         </ListItem>
       </List>
       <List>
@@ -50,7 +52,7 @@ export default function AppNav() {
           <ListItemIcon>
             <RoomServiceIcon/>
           </ListItemIcon>
-          <ListItemText primary={i18next.t('services')}/>
+          <ListItemText primary={i18next.t('services')} sx={{color: 'white'}}/>
         </ListItem>
       </List>
       <Divider />
@@ -60,13 +62,14 @@ export default function AppNav() {
   return (
     <ThemeProvider theme={theme}>
       <Box sx={{ flexGrow: 1, border: 0 }}>
-      <AppBar position="static" sx={{background: 'transparent', boxShadow: 'none'}}>
+      <AppBar position="static" sx={{background: 'black', boxShadow: 'none', borderBottom: '1px solid white'}}>
         <Toolbar>
-          <Typography variant="h4" sx={{ flexGrow: 1}} color={'#1976D2'}>
-            <Button onClick={toggleDrawer(true)} sx={{ color: 'color.text'}}>Menu</Button>
+          <Typography variant="h5" sx={{ flexGrow: 1, color: 'color.text'}} color={'#1976D2'}>
+            <Button onClick={toggleDrawer(true)} sx={{ color: 'color.text'}}><MenuIcon/></Button>
               <Drawer open={open} onClose={toggleDrawer(false)}>
                 {DrawerList}
               </Drawer>
+              Dashboard
           </Typography>
           <Stack direction={{xs: 'column', md: 'row'}} spacing={'0.5'} alignContent={'flex-end'}>
             <Button sx={{ color: 'color.text'}} variant='text' component= {RouterLink} to="/login/signup">{t('sign_up')}</Button>

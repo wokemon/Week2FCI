@@ -15,7 +15,11 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import StickyFooter from './Footer';
 import AppNav from './Navbar';
 
-const defaultTheme = createTheme();
+const defaultTheme = createTheme({
+  palette: {
+    mode: 'light'
+  }
+});
 
 export default function SignUp() {
 
