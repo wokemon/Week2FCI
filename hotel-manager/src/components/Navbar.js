@@ -22,6 +22,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import RoomIcon from '@mui/icons-material/Room';
 import FeedIcon from '@mui/icons-material/Feed';
 import LoyaltyIcon from '@mui/icons-material/Loyalty';
+import QuizIcon from '@mui/icons-material/Quiz';
 
 const theme = createTheme({
   palette: {
@@ -72,11 +73,18 @@ export default function AppNav() {
           <ListItemText primary={i18next.t('news')} sx={{color: 'white'}}/>
         </ListItem>
       <Divider/>
-        <ListItem component= {RouterLink} to='/service'>
+        <ListItem component={RouterLink} to='/service'>
           <ListItemIcon>
             <LoyaltyIcon/>
           </ListItemIcon>
           <ListItemText primary={i18next.t('promotion')} sx={{color: 'white'}}/>
+        </ListItem>
+      <Divider/>
+        <ListItem component={RouterLink} to='/faqs'>
+          <ListItemIcon>
+            <QuizIcon/>
+          </ListItemIcon>
+          <ListItemText primary={i18next.t('faq')} sx={{color: 'white'}} />
         </ListItem>
       </List>
     </Box>
