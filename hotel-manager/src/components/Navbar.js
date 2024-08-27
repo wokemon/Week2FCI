@@ -50,36 +50,28 @@ export default function AppNav() {
           </ListItemIcon>
           <ListItemText primary={i18next.t('home')} sx={{color: 'white'}}/>
         </ListItem>
-      </List>
       <Divider/>
-      <List>
-        <ListItem component= {RouterLink} to='/'>
+        <ListItem component= {RouterLink} to='/room'>
           <ListItemIcon>
             <RoomIcon/>
           </ListItemIcon>
           <ListItemText primary={i18next.t('room')} sx={{color: 'white'}}/>
         </ListItem>
-      </List>
       <Divider/>
-      <List>
         <ListItem component= {RouterLink} to='/service'>
           <ListItemIcon>
             <RoomServiceIcon/>
           </ListItemIcon>
           <ListItemText primary={i18next.t('services')} sx={{color: 'white'}}/>
         </ListItem>
-      </List>
       <Divider/>
-      <List>
         <ListItem component= {RouterLink} to='/service'>
           <ListItemIcon>
             <FeedIcon/>
           </ListItemIcon>
           <ListItemText primary={i18next.t('news')} sx={{color: 'white'}}/>
         </ListItem>
-      </List>
       <Divider/>
-      <List>
         <ListItem component= {RouterLink} to='/service'>
           <ListItemIcon>
             <LoyaltyIcon/>

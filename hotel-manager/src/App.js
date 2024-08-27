@@ -4,6 +4,7 @@ import SignIn from './components/Login';
 import UserLanding from './components/UserLanding';
 import SignUp from './components/SignUp';
 import Services from './components/Service';
+import Room from './components/Room';
 
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
       <Route path='/login' element={<SignIn />}></Route>
       <Route path='/login/signup' element={<SignUp />}></Route>
       <Route path='/service' element={<Services/>}></Route>
+      <Route path='/room' element={<Room/>}></Route>
     </Routes>
     </BrowserRouter>
   )
