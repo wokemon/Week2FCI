@@ -3,11 +3,10 @@ import bg from '../assets/bg.jpg';
 import AppNav from './Navbar';
 import StickyFooter from './Footer';
 import { Grid } from '@mui/material';
-import FB from './FBcard';
-import Tailor from './TailorCard';
-import Laundry from './LaundryCard';
-import Cleaning from './CleaningCard';
-import Valet from './ValetCard';
+import Rook from './RookCard';
+import Pawn from './PawnCard';
+import Queen from './QueenCard';
+import King from './KingCard';
 
 const MyComponent = styled('div')({
     minHeight: '100vh',
@@ -23,21 +22,18 @@ export default function Services() {
     return (
         <MyComponent>
             <AppNav/>
-            <Grid container spacing={3} sx={{ml: '20vh', mt: 'auto'}}>
+            <Grid container spacing={3} sx={{ml: '40vh', mt: 'auto'}}>
                 <Grid item xs={2}>
-                    <FB/>
+                    <Pawn/>
                 </Grid>
                 <Grid item xs={2}>
-                    <Tailor/>
+                    <Rook/>
                 </Grid>
                 <Grid item xs={2}>
-                    <Laundry/>
+                    <Queen/>
                 </Grid>
                 <Grid item xs={2}>
-                    <Cleaning/>
-                </Grid>
-                <Grid item xs={2}>
-                    <Valet/>
+                    <King/>
                 </Grid>
             </Grid>
             <StickyFooter/>
