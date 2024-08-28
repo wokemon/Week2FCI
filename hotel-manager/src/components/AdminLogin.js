@@ -24,7 +24,7 @@ const defaultTheme = createTheme({
   }
 });
 
-export default function SignIn() {
+export default function AdminLogin() {
   const { t } = useTranslation();
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -67,7 +67,7 @@ export default function SignIn() {
             <Lock />
           </Avatar>
           <Typography component="h1" variant="h5">
-            {t('sign_in')}
+            {t('admin_login')}
           </Typography>
           <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
             <TextField
@@ -107,19 +107,9 @@ export default function SignIn() {
               {t('sign_in')}
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link component={RouterLink} to="reset" variant="body2">
-                  {t('forgot_password')}
-                </Link>
-              </Grid>
               <Grid item>
-                <Link component={RouterLink} to="signup" variant="body2">
-                  {t('no_account')}
-                </Link>
-              </Grid>
-              <Grid item sx={{ml: '6rem'}}>
-                <Link component={RouterLink} to="admin" variant="body2">
-                  {t('admin')}
+                <Link component={RouterLink} to="/login" variant="body2">
+                  {t('not_admin')}
                 </Link>
               </Grid>
             </Grid>

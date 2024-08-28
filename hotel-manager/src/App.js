@@ -5,6 +5,7 @@ import UserLanding from './components/UserLanding';
 import SignUp from './components/SignUp';
 import Services from './components/Service';
 import Room from './components/Room';
+import AdminLogin from './components/AdminLogin';
 
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
       <Route path='/login/signup' element={<SignUp />}></Route>
       <Route path='/service' element={<Services/>}></Route>
       <Route path='/room' element={<Room/>}></Route>
+      <Route path='/login/admin' element={<AdminLogin/>}></Route>
     </Routes>
     </BrowserRouter>
   )
