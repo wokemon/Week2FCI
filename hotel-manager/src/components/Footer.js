@@ -8,7 +8,7 @@ import LanguageSwitcher from './LanguageSwitcher';
 
 function Copyright() {
   return (
-    <Typography variant="body2" sx={{color: 'black'}} textAlign={"center"}>
+    <Typography variant="body2" sx={{color: 'white'}} textAlign={"center"}>
       {'Copyright © '}
       <Link color="inherit" href="https://github.com/wokemon" target="_blank">
         AlecPhan
