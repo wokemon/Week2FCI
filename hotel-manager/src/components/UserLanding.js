@@ -5,6 +5,7 @@ import StickyFooter from './Footer';
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
 import * as React from 'react';
+import { colors } from '@mui/material';
 
 const MyComponent = styled('div')({
     minHeight: '100vh',
@@ -18,16 +19,25 @@ const MyComponent = styled('div')({
   
 const darkTheme = createTheme({
     palette: {
-        mode: 'dark'
+        color: {
+        text: "white"
+    },
+        mode: 'dark',
     }
 });
+
+function Welcome() {
+    return (
+        <Typography variant='h3' sx={{textAlign: 'right', color: 'color.text', minHeight: '100%'}}>Welcome to Hotel Manager</Typography>
+    )
+}
 
 export default function Landing() {
     return (
         <ThemeProvider theme={darkTheme}>
             <MyComponent>
                 <AppNav></AppNav>
-                
+                <Welcome></Welcome>
                 <StickyFooter></StickyFooter>
             </MyComponent>
         </ThemeProvider>
